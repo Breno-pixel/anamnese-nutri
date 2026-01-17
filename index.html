@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anamnese Nutricional</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f7f6;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .container {
+        max-width: 480px;
+        background: #fff;
+        margin: auto;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .logo img {
+        width: 200px;
+        max-width: 100%;
+    }
+
+    h2 {
+        font-size: 20px;
+        color: #2e7d32;
+        margin: 10px 0 0;
+    }
+
+    label {
+        display: block;
+        font-size: 16px;
+        margin-top: 15px;
+        font-weight: bold;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px;
+        margin-top: 6px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    textarea {
+        min-height: 90px;
+    }
+
+    button {
+        margin-top: 25px;
+        width: 100%;
+        padding: 16px;
+        font-size: 18px;
+        background: #2e7d32;
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    button:active {
+        transform: scale(0.98);
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <img src="logo-nutri.png" alt="Logo Nutricionista">
+        <h2>Ana Maria Simão Ortiz<br>CRN 3-7688</h2>
+    </div>
+
+    <form onsubmit="enviarWhatsApp(); return false;">
+
+        <label>Nome completo</label>
+        <input type="text" id="nome" required>
+
+        <label>Idade</label>
+        <input type="number" id="idade">
+
+        <label>Sexo</label>
+        <select id="sexo">
+            <option>Feminino</option>
+            <option>Masculino</option>
+        </select>
+
+        <label>Peso atual (kg)</label>
+        <input type="number" id="peso">
+
+        <label>Altura (cm)</label>
+        <input type="number" id="altura">
+
+        <label>Profissão</label>
+        <input type="text" id="profissao">
+
+        <label>Faz atividade física? (qual?)</label>
+        <input type="text" id="atividade">
+
+        <label>Quanto de água bebe por dia?</label>
+        <input type="text" id="agua">
+
+        <label>Como é sua alimentação no dia a dia?</label>
+        <textarea id="anamnese"></textarea>
+
+        <label>Problemas de saúde (se tiver)</label>
+        <textarea id="saude_pessoal"></textarea>
+
+        <label>Problemas de saúde do pai</label>
+        <textarea id="saude_pai"></textarea>
+
+        <label>Problemas de saúde da mãe</label>
+        <textarea id="saude_mae"></textarea>
+
+        <button type="submit">📲 Enviar para WhatsApp</button>
+
+    </form>
+</div>
+
+<script>
+function enviarWhatsApp() {
+    const numero = "5511996223663";
+
+    const dados = `
+📝 *ANAMNESE NUTRICIONAL*
+
+👤 *Nome:* ${nome.value}
+🎂 *Idade:* ${idade.value}
+⚧ *Sexo:* ${sexo.value}
+⚖ *Peso:* ${peso.value}
+📏 *Altura:* ${altura.value}
+💼 *Profissão:* ${profissao.value}
+
+🏃 *Atividade física:* ${atividade.value}
+💧 *Água por dia:* ${agua.value}
+
+🥗 *Alimentação:*
+${anamnese.value}
+
+❤️ *Saúde pessoal:*
+${saude_pessoal.value}
+
+👨 *Saúde do pai:*
+${saude_pai.value}
+
+👩 *Saúde da mãe:*
+${saude_mae.value}
+    `;
+
+    window.open(
+        `https://wa.me/${numero}?text=${encodeURIComponent(dados)}`,
+        "_blank"
+    );
+}
+</script>
+
+</body>
+</html>
