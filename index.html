@@ -3,170 +3,323 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anamnese Nutricional</title>
+<title>AnaMaria Nutricional</title>
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: #f4f7f6;
-        margin: 0;
-        padding: 10px;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7f6;
+    margin: 0;
+    padding: 10px;
+}
 
-    .container {
-        max-width: 480px;
-        background: #fff;
-        margin: auto;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+.container {
+    max-width: 520px;
+    background: #fff;
+    margin: auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
-    .logo {
-        text-align: center;
-        margin-bottom: 15px;
-    }
+.logo {
+    text-align: center;
+}
+.logo img {
+    width: 200px;
+}
+h2 {
+    color: #2e7d32;
+    text-align: center;
+    margin-bottom: 5px;
+}
+h3 {
+    margin-top: 25px;
+    color: #444;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
 
-    .logo img {
-        width: 200px;
-        max-width: 100%;
-    }
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
 
-    h2 {
-        font-size: 20px;
-        color: #2e7d32;
-        margin: 10px 0 0;
-    }
+textarea {
+    min-height: 80px;
+}
 
-    label {
-        display: block;
-        font-size: 16px;
-        margin-top: 15px;
-        font-weight: bold;
-    }
+canvas {
+    border: 2px dashed #999;
+    width: 100%;
+    height: 160px;
+    border-radius: 8px;
+    margin-top: 10px;
+    touch-action: none;
+}
 
-    input, select, textarea {
-        width: 100%;
-        font-size: 16px;
-        padding: 12px;
-        margin-top: 6px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-    }
+button {
+    width: 100%;
+    padding: 16px;
+    margin-top: 25px;
+    background: #2e7d32;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+}
 
-    textarea {
-        min-height: 90px;
-    }
-
-    button {
-        margin-top: 25px;
-        width: 100%;
-        padding: 16px;
-        font-size: 18px;
-        background: #2e7d32;
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-    }
-
-    button:active {
-        transform: scale(0.98);
-    }
+.clear {
+    background: #999;
+    margin-top: 10px;
+}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-
     <div class="logo">
-        <img src="logo-nutri.png" alt="Logo Nutricionista">
+        <img src="logo-nutri.png">
         <h2>Ana Maria Simão Ortiz<br>CRN 3-7688</h2>
     </div>
 
-    <form onsubmit="enviarWhatsApp(); return false;">
+<form onsubmit="enviarWhatsApp(); return false;">
 
-        <label>Nome completo</label>
-        <input type="text" id="nome" required>
+<h3>📌 Dados Pessoais</h3>
 
-        <label>Idade</label>
-        <input type="number" id="idade">
+<label>Nome completo</label>
+<input id="nome" required>
 
-        <label>Sexo</label>
-        <select id="sexo">
-            <option>Feminino</option>
-            <option>Masculino</option>
-        </select>
+<label>Data de nascimento</label>
+<input id="nascimento" type="date">
 
-        <label>Peso atual (kg)</label>
-        <input type="number" id="peso">
+<label>Idade</label>
+<input id="idade" type="number">
 
-        <label>Altura (cm)</label>
-        <input type="number" id="altura">
+<label>Sexo</label>
+<select id="sexo">
+    <option value="">Selecione</option>
+    <option>Feminino</option>
+    <option>Masculino</option>
+</select>
 
-        <label>Profissão</label>
-        <input type="text" id="profissao">
+<label>Estado civil</label>
+<input id="estado">
 
-        <label>Faz atividade física? (qual?)</label>
-        <input type="text" id="atividade">
+<label>Telefone</label>
+<input id="telefone" type="tel">
 
-        <label>Quanto de água bebe por dia?</label>
-        <input type="text" id="agua">
+<label>E-mail</label>
+<input id="email" type="email">
 
-        <label>Como é sua alimentação no dia a dia?</label>
-        <textarea id="anamnese"></textarea>
+<label>Endereço</label>
+<textarea id="endereco"></textarea>
 
-        <label>Problemas de saúde (se tiver)</label>
-        <textarea id="saude_pessoal"></textarea>
+<h3>📏 Dados Antropométricos</h3>
 
-        <label>Problemas de saúde do pai</label>
-        <textarea id="saude_pai"></textarea>
+<label>Peso atual (kg)</label>
+<input id="peso">
 
-        <label>Problemas de saúde da mãe</label>
-        <textarea id="saude_mae"></textarea>
+<label>Altura (m)</label>
+<input id="altura">
 
-        <button type="submit">📲 Enviar para WhatsApp</button>
+<label>Peso usual</label>
+<input id="peso_usual">
 
-    </form>
+<label>Peso desejado</label>
+<input id="peso_desejado">
+
+<h3>🚶‍♂️ Atividade Física</h3>
+
+<label>Pratica atividade física?</label>
+<input id="atividade" placeholder="Ex: caminhada, musculação">
+
+<label>Frequência por semana</label>
+<input id="frequencia">
+
+<label>Duração por sessão</label>
+<input id="duracao">
+
+<h3>💧 Hidratação</h3>
+
+<label>Quantos copos ou litros de água consome por dia?</label>
+<input id="agua">
+
+<h3>🍽️ Anamnese Alimentar</h3>
+
+<label>Descreva sua alimentação diária</label>
+<textarea id="alimentar"></textarea>
+
+<h3>🩺 Saúde Atual</h3>
+
+<label>Possui alguma doença diagnosticada?</label>
+<textarea id="doencas"></textarea>
+
+<label>Usa medicamentos? Quais?</label>
+<textarea id="medicamentos"></textarea>
+
+<label>Possui alergias ou intolerâncias alimentares?</label>
+<textarea id="alergias"></textarea>
+
+<label>Já realizou alguma cirurgia?</label>
+<textarea id="cirurgias"></textarea>
+
+<h3>👨‍👩‍👧 Histórico Familiar</h3>
+
+<label>Doenças do pai</label>
+<textarea id="pai"></textarea>
+
+<label>Doenças da mãe</label>
+<textarea id="mae"></textarea>
+
+
+<h3>🎯 Objetivo do Atendimento</h3>
+<select id="objetivo" required>
+    <option value="">Selecione uma opção</option>
+    <option>Emagrecimento</option>
+    <option>Ganho de massa</option>
+    <option>Reeducação alimentar</option>
+    <option>Controle de doença</option>
+</select>
+
+<h3>📝 Assinatura do Paciente</h3>
+<p>Assine com o dedo ou mouse:</p>
+<canvas id="assinatura"></canvas>
+<button type="button" class="clear" onclick="limpar()">Limpar assinatura</button>
+
+<button type="submit">📲 Enviar para WhatsApp</button>
+</form>
 </div>
 
 <script>
+    let assinou = false;
+
+const canvas = document.getElementById("assinatura");
+const ctx = canvas.getContext("2d");
+
+let desenhando = false;
+
+function ajustarCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    ctx.lineWidth = 2;
+    ctx.lineCap = "round";
+}
+
+window.onload = ajustarCanvas;
+window.onresize = ajustarCanvas;
+
+// Touch
+canvas.addEventListener("touchstart", e => {
+    assinou = true;
+    desenhando = true;
+    const t = e.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    ctx.beginPath();
+    ctx.moveTo(t.clientX - rect.left, t.clientY - rect.top);
+});
+
+canvas.addEventListener("touchmove", e => {
+    if (!desenhando) return;
+    e.preventDefault();
+    const t = e.touches[0];
+    const rect = canvas.getBoundingClientRect();
+    ctx.lineTo(t.clientX - rect.left, t.clientY - rect.top);
+    ctx.stroke();
+});
+
+canvas.addEventListener("touchend", () => desenhando = false);
+
+// Mouse
+canvas.addEventListener("mousedown", e => {
+    assinou = true;
+    desenhando = true;
+    ctx.beginPath();
+    ctx.moveTo(e.offsetX, e.offsetY);
+});
+
+canvas.addEventListener("mousemove", e => {
+    if (!desenhando) return;
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+});
+
+canvas.addEventListener("mouseup", () => desenhando = false);
+
+function limpar() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    assinou = false;
+}
+
+
 function enviarWhatsApp() {
     const numero = "5511996223663";
 
-    const dados = `
-📝 *ANAMNESE NUTRICIONAL*
+ const msg = `
+📝 *ANA MARIA NUTRICIONAL*
+Nutricionista: Ana Maria Simão Ortiz
+CRN: 3-7688
 
-👤 *Nome:* ${nome.value}
-🎂 *Idade:* ${idade.value}
-⚧ *Sexo:* ${sexo.value}
-⚖ *Peso:* ${peso.value}
-📏 *Altura:* ${altura.value}
-💼 *Profissão:* ${profissao.value}
+📌 *DADOS PESSOAIS*
+👤 Nome completo: ${nome.value}
+🎂 Data de nascimento: ${nascimento.value}
+📅 Idade: ${idade.value}
+🚻 Sexo: ${sexo.value}
+💍 Estado civil: ${estado.value}
+📞 Telefone: ${telefone.value}
+📧 E-mail: ${email.value}
+🏠 Endereço: ${endereco.value}
 
-🏃 *Atividade física:* ${atividade.value}
-💧 *Água por dia:* ${agua.value}
+📏 *DADOS ANTROPOMÉTRICOS*
+⚖️ Peso atual (kg): ${peso.value}
+📐 Altura (m): ${altura.value}
+📊 Peso usual: ${peso_usual.value}
+🎯 Peso desejado: ${peso_desejado.value}
 
-🥗 *Alimentação:*
-${anamnese.value}
+🚶‍♂️ *ATIVIDADE FÍSICA*
+🏃 Pratica atividade física? Qual(is): ${atividade.value}
+📆 Frequência por semana: ${frequencia.value}
+⏱️ Duração por sessão: ${duracao.value}
 
-❤️ *Saúde pessoal:*
-${saude_pessoal.value}
+💧 *HIDRATAÇÃO*
+🚰 Consumo de água por dia: ${agua.value}
 
-👨 *Saúde do pai:*
-${saude_pai.value}
+🍽️ *ANAMNESE ALIMENTAR*
+🥗 Alimentação diária: ${alimentar.value}
 
-👩 *Saúde da mãe:*
-${saude_mae.value}
-    `;
+🩺 *SAÚDE ATUAL*
+🏥 Doenças diagnosticadas: ${doencas.value}
+💊 Medicamentos em uso: ${medicamentos.value}
+⚠️ Alergias / intolerâncias: ${alergias.value}
+🩹 Cirurgias realizadas: ${cirurgias.value}
 
-    window.open(
-        `https://wa.me/${numero}?text=${encodeURIComponent(dados)}`,
-        "_blank"
-    );
+👨‍👩‍👧 *HISTÓRICO FAMILIAR*
+👨 Pai – Doenças: ${pai.value}
+👩 Mãe – Doenças: ${mae.value}
+
+🎯 *OBJETIVO DO ATENDIMENTO*
+${objetivo.value}
+
+✍️ *ASSINATURA*
+${assinou 
+    ? "Assinatura realizada no formulário"
+    : "Sem assinatura digital (nome informado)"
+}
+
+
+📅 Data do preenchimento: ${new Date().toLocaleDateString('pt-BR')}
+`;
+
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`);
 }
 </script>
 
 </body>
 </html>
+
+
